@@ -1,0 +1,134 @@
+https://rahulshettyacademy.com/client/ is the ecommerce website that we will be working on.
+I have created an account. saipraveenseva2222@gmail.com//Qwerty@11
+
+Right click > Insepct > Network is where we can see the HTTP requests being performed and the data is being passed or retrieved.
+
+Once I login if check the "Network" tab, In the Headers sections I can see the Request method, Request URL, status code, Content type etc details
+In the Payload tab I can see the payload sent through this POST request(Username and password).
+In the response tab you will get a response with a token, userId and message
+
+I will be landing on the home page of this ecommerce website.
+
+Now lets perform the above steps in Postman and see if can login through postman and get the expected message and status code.
+
+I open Postman and create a new collection name E-commerce website and I start the work by creating a POST request for login(Name it as Login)
+
+Perform login action in the website and Inspect > Network > Headers
+
+The request URL is the login URL copy the URL and paste it in Postman.
+
+Navigate to Network > Payload > view source and copy the payload(This goes in the body)
+
+Open Login request in Postman. Navigate to body > raw > JSON and paste this payload and beautify it.
+
+Hit on Send and check for the 200 status code indicating a successful login
+A token, userId and message are displayed.
+
+******************************************************
+A little about how are we going to do an End to End operation on this website cover all aspects of API testing
+
+1. First we login.
+2. We create a product in the website
+3. We place the order
+4. We delete the product from the website.
+
+These are 4 operations we are going to perform.
+*****************************************************************
+
+Login is done now we add a product to the website. This action cannot be explicitly performed on the website.
+So we cannot get the URL from the Network > header tab. We use the contract for this URL.
+The contract is in Ecommerce_Contract.txt. Anyway I'll be posting the required parameters here.
+
+Add product endpoint: https://rahulshettyacademy.com/api/ecom/product/add-product
+
+Details(payload) of the product we are going to add:(Below data is in form format unlike raw JSON)
+
+productName:qwerty
+productAddedBy:{{userId}}
+productCategory:fashion
+productSubCategory:shirts
+productPrice:11500
+productDescription:Addias Originals
+productFor:women
+
+Navigate to Postman create a new "Create product" request and paste the endpoint URL
+As we are adding something with a payload this is a POST request.
+Now coming to Body > form-data. This is where we enter the form-data payload.
+
+We can either enter key and value seperately or we can click on "Bulk Edit" and copy paste the payload mentioned above.
+Once we paste the payload in the Bulk Edit, tap on key Edit again. It will enter all the payload elements.
+
+Once it is done, one value(userId) is missing from the key productAddedBy. Open the Login post request from earlier and check for userId in the response. Copy paste it in the productAddedby key value.
+
+Now we focus on the authorization part.Navigate to Headers section in Postman. Add a field "Authorization"  and value would be the "token" generated in the login post request response. Copy paste it.
+
+Almost done but we need to add an image for the product as well.
+Add another key "productImage" and tap on dropdown "Text" and change it "File".
+Add the image and upload it to the teams.
+
+Hit on Send and open the website, reload and see the product uploaded in the website. we should also see the Product added successfully message in the Postman console.
+The product we added will generate a productID once the product is added to the website. we are gonna use it while adding the product to cart or delete order or delete product operations.
+
+*****************************************************************************
+Now that we are done adding the product, we are going to place an order.
+Do this on the website to get the URL, parameters and other stuff.
+
+Before you perform a check out. Open Inspect > Network to see all the http requests being performed.
+and then perform the checkout. you will see a "create-order" request.
+tap on it to see the URL, parameters passed and payload.
+
+Now start a new request in Postman
+As we are placing an order its a POST request.
+
+Paste this url https://rahulshettyacademy.com/api/ecom/order/create-order
+Open Header section and create a Header "Authorization" the key value for this is generating when we did login request. copy the token from that request and paste it.
+Coming to body section. its a raw json. Just copy and paste json from the website when we performed the create order operation on the website into the body section and beautify it.
+
+You might wanna change the productID. A productID is generated when add the product into the website. Copy and paste it.
+
+Run the request to see a 201 status code "Order placed successfully" message. A orders ID is generated indicating a unique ID for the order and a productorderID is also displayed which is nothing but the productID. Save these for future reference
+Also make sure the order is place in the website by this Postman request and the order ID should match the "orders" generated in Postman response.
+
+****************************************************************************************
+
+Now time to view the order we placed. As we are retrieving the details of something we use GET http request.
+
+URL for the GET request would be: https://rahulshettyacademy.com/api/ecom/order/get-orders-details
+It does have a query parameter which is "orders" that was generating in the Postman response while placing create order request.
+
+Add a query parameter id and paste this "orders" in the value.
+Don't forget to add the authorization token.
+Hit on send and view the details in the response.
+
+*******************************************************************************************
+
+Now we ae going to delete the product from the website
+
+Product delete URL: https://rahulpshettyacademy.com/api/ecom/product/delete-product/
+
+The product we are trying to delete has a productID which was generated when we added or the product onto the website.
+
+this product ID can also be obtained if we add the product into the cart and do Inspect > Network >
+
+As this product ID is a path parameter we can just it after "/" in the URL
+
+Open postman create a DELETE request paste the above delete URL and paste the product ID that we wish to delete.
+Don't forget the Authorization header.
+
+Hit on SEnd 200 OK status code and the Product deleted succesfully is displayed.
+****************************************************************************************************
+
+
+**********************************************
+The way these request are designed in this course is the best way to distinguish between how we can run these HTTP requests.
+We have dealt with
+Query param
+Path param
+Form data
+JSON data
+Session authorization token
+**********************************************
+
+Now time to automate this in REST Assured.
+
+

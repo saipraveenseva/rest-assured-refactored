@@ -1,0 +1,111 @@
+A banking application would be a simple way to demonstrate it.
+Lets say we are making an account_overview() API call
+
+This API in itself might call some other APIs like balance, account details, recent transcation. All these are APIs as well.
+
+If we manage to provide initial authentication to the bank application which is username and password and may be an OTP.
+
+If people with malicious intent manage to bypass this initial authorization they will be able to access all these API.
+Inorder to secure we add in a second level of authorization to the application. This is done using OAuth2.0
+
+OAuth2.0 helps us lock the internal APIs to be called only with proper 2nd level of authentication.
+Oauth2.0 provides us with an Authorization server which give some access token only through which these internal APIs can be accessed
+Only a valid access token can get you the access.
+
+Developers will create this authorization server API to get these access tokens
+The way this authorization server API can help with the access are
+1. Client Credential grant
+2. Password type grant
+3. Authorization code grant.
+
+The type of grant will define who you are. Not everyone can get all these grants.
+These are categorically divided.
+
+1. Client Credential grant
+In this grant the developer will generate a clientID and clientSecret
+These 2 details will be shared to main API using which it will provide access to the user.
+
+2. Password type grant
+In this grant the access is possible by using a username and password
+
+**** If we were to automate these we need ask the dev a few questions
+1. Which grant are you using to authenticate to your APIs?
+2. If its client credential grant, then whats the clientID and clientSecret?
+3. If its the Password type grant whats the username and password.
+
+
+3. Authorization code grant.
+This will be addressed later on a much bigger picture.
+
+Let's say this is the contract given by the dev. QA asks the dev to generate a clientID and clientSecret to get the access token and test this autorization server considering
+client credential grant is used. if Its a password type grant we request them for a username and password.
+******************************************************************
+
+Authorization Server EndPoint:
+
+https://rahulshettyacademy.com/oauthapi/oauth2/resourceOwner/token      // This is the authorisation server endpoint
+
+
+
+HTTP Method : POST
+
+
+
+Form parameters :
+
+
+
+client_id:
+
+692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com
+
+client_secret:  erZOWM9g3UtwNRj340YYaK_W
+
+grant_type:   client_credentials
+
+scope:  trust
+
+******************************************************************
+
+
+
+GetCourseDetails EndPoint (Secured by OAuth) :
+
+https://rahulshettyacademy.com/oauthapi/getCourseDetails        // This is the main endpoint/URL that was authorised using the Authorization server.
+                                                                // Contains a list of courses only displayed if authorization is done.
+
+
+
+HTTP Method : GET
+
+Query Parameter : access_token
+
+************************************************************************************************************************
+
+Testing Authentication server with client credential grant using Postman
+
+Goal
+1. Generate a POST request to the authentication server to get the access code by providing the client_id and client_secret provided by the developer.
+2. Generate a GET request to the actual URL/endpoint to get the list of courses
+
+1. Generate a POST request
+baseURI: https://rahulshettyacademy.com/oauthapi/oauth2/resourceOwner/token
+Details provided in the "form-data" section
+client_id:692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com
+client_secret:  erZOWM9g3UtwNRj340YYaK_W
+grant_type:   client_credentials
+scope:  trust
+
+Once these details are given hit on Send. It will generate an access token. Copy it..!!
+
+2. Generate a GET request to the actual URL/endpoint to get the list of courses
+baseURI: https://rahulshettyacademy.com/oauthapi/getCourseDetails // actual endpoint which we will try to access using the access token that got from the POST request.
+Query Parameter : access_token
+
+Once these details are given hit on Send. It will open up the list of courses available in the endpoint/URL.
+
+Now we need to automate these using REST API calls.
+
+
+
+

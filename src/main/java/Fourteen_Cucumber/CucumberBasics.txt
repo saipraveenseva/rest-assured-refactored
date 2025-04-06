@@ -1,0 +1,46 @@
+
+
+Cucumber introduces with a language called Gherking.
+
+Gherkin is a Business Readable Domain Specific Language.
+It basically sets up some ground rules on how we write the steps on a certaine behavior of the application
+
+This is useful for avoid misinterpretation of statement by Business Analysts, Developers and QA
+
+Keywords in Cucumber:  Scenario, Feature, Feature file, Scenario outline, Step Definition
+
+In Cucumber testcases are represented as Scenarios.
+
+Scenarios contain Steps which are rquivalent to test Steps and use the following keywords(Gherkin syntax) to denote them. Given, When, Then, But, And(All are case sensitive)
+
+Scenario: Make minimum due payment
+    Given: user is on Pay credit card bill page
+    When: user fills all details and selects Minimum amount option
+    And: user clicks on Pay button
+    Then: Credit card payment confirmation page is displayed
+    And: Reference number is displayed
+    But: error message is not displayed
+
+
+Feature and Feature File:
+Feature represents Business requirment
+Feature File acts a test suite which consists of all scenarios
+
+We can create a Feature File using .feature extension
+
+Payment.feature file contains all scenarios.
+
+Scenario Outline is used when we need to run the tests and multiple datasets(or tables)
+
+Scenario Outline: Check if String is a Palindrom
+Given: I entered a word <wordsToTest>
+When: I test it for palindrome
+Then: the output should be <output>
+Examples:
+wordsToTest || output
+Refer           true
+Coin            false
+Space           false
+racecar         true
+
+This can also be called as parametrization as we are passing the wordsToTest and output as parameters to validate.

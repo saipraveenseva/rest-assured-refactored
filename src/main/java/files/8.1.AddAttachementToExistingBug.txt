@@ -1,0 +1,22 @@
+
+We have the issue/bug ID store somewhere from the previous POST request.
+Now we will try to add an attachement to the bug that we previously created
+
+Steps to add attachment to the bug in Jira from Postman
+1. Navigate to https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-attachments/#api-rest-api-3-issue-issueidorkey-attachments-post
+2. Observe the curl section for Add attachment
+        curl --location --request POST 'https://your-domain.atlassian.net/rest/api/3/issue/TEST-123/attachments'
+        -u 'email@example.com:<api_token>'
+        -H 'X-Atlassian-Token: no-check'
+        --form 'file=@"myfile.txt"'
+3. Replace the domain with our own domain name and the TEST-123 with the issue/bug ID we created earlier.
+4. Result: https://saipraveenseva.atlassian.net/rest/api/3/issue/10001/attachments
+5. Open header section and add the Authorization along with the Key as we did in the previous POST request while creating the bug
+6. Add one more header "X-Atlassian-Token" with the value "no-check"
+7. Now nvaigate to Body section and select "form-data" from the dropdown
+8. Add a key "file" and select "File" from the dropdown
+9. Add the screenshot in the "value" field.
+10. Now hit on Send to send the post request.
+11. Once the request is sent we should see a "200 OK" status code in the output console. This means success.
+12. Navigate to our project in Jira and refresh the bug we filed earlier.
+13. The attachment should be visible in the bug.

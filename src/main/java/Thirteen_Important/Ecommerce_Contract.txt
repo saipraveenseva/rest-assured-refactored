@@ -1,0 +1,50 @@
+•	Injecting JWT Session token into API Calls using Postman
+•	How to work with POST Call form-data
+•	How to Send Attachments through request using Postman
+•	Unauthorized 403 API Example with Postman
+
+
+End to End Flow
+Login API -> Create Product -> Purchase Order on created Product -> Delete order -> Delete Product
+
+
+
+
+
+
+
+Create Product Contract –
+
+End point –
+
+https://rahulshettyacademy.com/api/ecom/product/add-product
+
+Http Method - POST
+Form Data -
+
+productName:qwerty
+productAddedBy:{{userId}}
+productCategory:fashion
+productSubCategory:shirts
+productPrice:11500
+productDescription:Addias Originals
+productFor:women
+
+
+
+
+
+
+
+Delete Product :
+
+https://rahulshettyacademy.com/api/ecom/product/delete-product/{{productId}}
+
+Http Method  DELETE
+
+
+
+
+
+
+

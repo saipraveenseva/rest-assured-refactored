@@ -1,0 +1,51 @@
+Step by step process of creating a bug in Jira using Postman
+
+1. Setup an atlassian account and host a website(saipraveenseva.atlassian.net)
+2. Create a project and file a bug manually to get to know how things work
+3. Now we need to create a bug using Postman
+4. Create a new collection and add a new request(POST request).
+5. Makes sure there is a header "Content-type" with the value "application/json"
+6. Now add another header named "Authorization" and value for this can be obtained by following the below steps.
+    a. Navigate to https://id.atlassian.com/manage-profile/security/api-tokens in the browser.
+    b. Create an API token, name it and copy it once created.
+    c. The API token is only accepted in a Base64 encoded format.
+    d. Navigate to https://www.base64encode.org/ paste the API token and enter your login id before the token followed by ":"
+    e. Like this saipraveenseva@gmail.com:ATATT3xFfGF0I6uOB8WjXgahUX_UKQ_W0YHV4-MQnnmMZnKSvXDvaNuYBKytRKpk5x4CNkVJ4Vu5cwbvCeCUDmmsiEEzC1Uh2p9zp_cyjXLKXqCOodFb_sN4UEpWDKbOkEY9y0EVBW6I0l50LadDJ7rDWO_gN-PYLT8-izFafzTcDqY9GL_rZ6Y=513C865C
+    f. Tap on encode below and copy the encoded value.
+    g. Navigate to postman and in the "Authorization" header that we added earlier, the value section should contain the value
+    h. Basic c2FpcHJhdmVlbnNldmFAZ21haWwuY29tOkFUQVRUM3hGZkdGMEk2dU9COFdqWGdhaFVYX1VLUV9XMFlIVjQtTVFubm1NWm5LU3ZYRHZhTnVZQkt5dFJLcGs1eDRDTmtWSjRWdTVjd2J2Q2VDVURtbXNpRUV6QzFVaDJwOXpwX2N5alhMS1hxQ09vZEZiX3NONFVFcFdES2JPa0VZOXkwRVZCVzZJMGw1MExhZERKN3JEV09fZ04tUFlMVDgtaXpGYWZ6VGNEcVk5R0xfclo2WT01MTNDODY1Qw==
+    i. Step h is the encoded key that we copied and it should be preceeded with a keyword "Basic" and a space.
+    j. Basic indicates we are using Basic authorization and there are different kinds of authorization that we can use.
+    k. Now navigate to body section in postman and paste this
+    {
+      "fields": {
+        "project": {
+          "key": "SCRUM"        // This key should be obtained from Jira project setting
+        },
+        "summary": "Dropdowns issue",   // This is the title of the bug
+        "description": {
+          "version": 1,
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Your bug description here.  This can be multiple lines." // This is the description of the bug
+                }
+              ]
+            }
+          ]
+        },
+        "issuetype": {
+          "name": "Bug"
+        }
+        // ... other fields
+      }
+    }
+
+    l.There are other fields as well but for time being and the sake of simplicity I just added summary, description and issue type:bug.
+    m. Now tap on "Send" in the postman which will send a post request that will create a bug in our Jira project
+    n. Navigate to Jira project and make sure the Bug is created with the filed we specified in Postman
+    o. When the issue/bug is create we also get the issue id in the postman in the console. save it somewhere.

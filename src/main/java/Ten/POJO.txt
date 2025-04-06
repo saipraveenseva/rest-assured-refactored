@@ -1,0 +1,17 @@
+Serialization:
+Serialization in REST assured context is a process of converting a java object into Request body(Payload).
+REST assured also supports deserialization by converting Response body back to Java object.
+
+Advantages:
+Easy to parse and extract response(json/xml) values if they are wrapped as Java object.
+User friendly methods can be created which makes code more readable.
+
+Design approach:
+Java object is constructed with the support of POJO classes
+POJO classes are created based on the request?Response payload.
+
+Libraries required:
+Jackson, Jackson2, Gson, Johnzon in the classpath and for XML you need JAXB
+
+-----------------------------------------------------------
+
