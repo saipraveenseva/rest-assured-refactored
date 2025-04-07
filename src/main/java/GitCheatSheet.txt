@@ -1,0 +1,68 @@
+Here's your concise Git cheat sheet tailored for interview prep—everything critical in a clean, glanceable format:
+
+---
+
+## 🔧 Git Basics
+
+- `git init` – Initialize new repo
+- `git clone <url>` – Clone repo
+- `git status` – Show status of working tree
+- `git add .` – Stage all changes
+- `git add <file>` – Stage specific file
+- `git commit -m "msg"` – Commit staged changes
+- `git push origin <branch>` – Push to remote
+
+## 🔁 Undoing Changes
+
+- `git restore <file>` – Undo unstaged changes
+- `git restore --staged <file>` – Unstage a file
+- `git reset --soft HEAD~1` – Undo commit, keep changes staged
+- `git reset --mixed HEAD~1` – Undo commit, unstage changes
+- `git reset --hard HEAD~1` – Undo commit & all changes (⚠️ irreversible)
+
+## 🌱 Branching
+
+- `git branch` – List branches
+- `git branch <name>` – Create branch
+- `git switch <branch>` – Switch branches
+- `git checkout -b <name>` – Create + switch to branch
+- `git branch -d <name>` – Delete local branch
+
+## 🎯 Stashing
+
+- `git stash` – Stash staged & unstaged changes
+- `git stash -a` – Stash all including untracked files
+- `git stash list` – Show stashed changes
+- `git stash apply` – Reapply latest stash
+- `git stash drop` – Delete latest stash
+
+## 🧯 Reverting
+
+- `git revert <commit>` – Create new commit to undo a commit (safe for public branches)
+
+## 🎢 Rebasing
+
+- `git rebase <branch>` – Reapply commits onto target branch
+- `git rebase -i HEAD~<n>` – Interactive rebase for last n commits
+- `git push origin <branch> --force` – Push rebased changes
+
+## 🧩 Merge & Conflict
+
+- `git merge <branch>` – Merge into current branch
+- Conflict resolution:
+  1. Manually fix
+  2. `git add <file>`
+  3. `git commit`
+
+## 👥 Collaboration Workflow (Pull Request)
+
+1. `git clone <repo>`
+2. `git checkout -b feature-x`
+3. Make changes → `git add .` → `git commit -m "msg"`
+4. `git push origin feature-x`
+5. Create Pull Request
+6. Master reviews and merges
+
+---
+
+Would you like this exported as a PDF or Markdown file for reference?
