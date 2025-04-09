@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 //@RunWith(Cucumber.class) states that we need Junit to run this.
 // @CucumberOptions will give location of feature file and stepDefinitions file
 
-public class CucumberTestRunner {
+public class CucumberTest {
 
     // Without writing any stepDefinitions, if we run this TestRunner, we will get an error
     // indicating the given, when and then does not have a relevant implementation written yet.

@@ -1,6 +1,6 @@
-A:\API Testing\REST_Assured\REST_Assured\src\test\java\cucumber\Options\CucumberTestRunner.java
-A:\API Testing\REST_Assured\REST_Assured\src\test\java\resources\APIResources.java
-A:\API Testing\REST_Assured\REST_Assured\src\test\java\resources\TestData.java
-A:\API Testing\REST_Assured\REST_Assured\src\test\java\resources\Utils.java
-A:\API Testing\REST_Assured\REST_Assured\src\test\java\stepDefinitions\Hooks.java
-A:\API Testing\REST_Assured\REST_Assured\src\test\java\stepDefinitions\stepDefinition.java
+A:\API Testing\REST_Assured\rest-assured-refactored\src\test\java\cucumber\Options\CucumberTest.java
+A:\API Testing\REST_Assured\rest-assured-refactored\src\test\java\resources\APIResources.java
+A:\API Testing\REST_Assured\rest-assured-refactored\src\test\java\resources\TestData.java
+A:\API Testing\REST_Assured\rest-assured-refactored\src\test\java\resources\Utils.java
+A:\API Testing\REST_Assured\rest-assured-refactored\src\test\java\stepDefinitions\Hooks.java
+A:\API Testing\REST_Assured\rest-assured-refactored\src\test\java\stepDefinitions\stepDefinition.java

@@ -11,7 +11,7 @@ Feature: Validating Place APIs
   Examples:
     |name | language |address  |
     |Seva | English  |Hyderabad|
-    # |Sai | Telugu  |Vijayawada |
+     #|Sai | Telugu  |Vijayawada |
     # |Praveen | Hindi  |Allahabad|
 
   @DeletePlace    # Including tags like these will assign some tags to the testcase which we can use to skip or not skip a particular testcase

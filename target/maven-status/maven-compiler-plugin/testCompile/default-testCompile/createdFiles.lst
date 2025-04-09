@@ -1,5 +1,5 @@
 stepDefinitions\Hooks.class
-cucumber\Options\CucumberTestRunner.class
+cucumber\Options\CucumberTest.class
 resources\TestData.class
 resources\Utils.class
 stepDefinitions\stepDefinition.class
